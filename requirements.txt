@@ -1,0 +1,14 @@
+duckdb
+pandas
+numpy
+pyarrow
+scipy
+statsmodels
+scikit-learn
+lightgbm
+shap
+matplotlib
+# optional, exploratory script 07_isf_two_stage.py only
+numpyro
+jax
+arviz
