@@ -1,44 +1,46 @@
-# Insülin Doz-Yanıt Çalışması — Dışlama Kriteri Registry
-Sürüm: v1.3 — 16,07,26 (Makale 2 taslak sabitleme)
+# Insülin Doz-Yanıt Çalışması: Dışlama Kriteri Registry
+Sürüm: v1.3 (16.07.2026; kriter tanımları bu tarihten sonra değişmedi)
 Sorumlu: S. Efe
-Durum: **DONDURULMADI** — İmza bekliyor (bkz. altta imza satırı)
+Durum: **SON SÜRÜM, KAPATILDI** (27.11.2026, S. Efe). Ayrıntı: en alttaki süreç notu.
 
 ## Veri kaynağı ve tanım beyanları (v1.3 sabit)
 - Veri: **MIMIC-IV v3.1** (`physionet-data.mimiciv_3_1_{icu,hosp,derived}`), sürüm sabit.
-- Makale 2 analiz seti: **7.147 glarjin doz olayı / 1.074 hasta** (gece-glukozlu),
-  kohort akışı 94.458 ICU yatışından (bkz. qc/paper2_tables/T1_cohort.md).
+- Analiz seti (makaledeki son sayılar): 94.458 ICU yatışından 7.876 uygun yatış;
+  **1.117 hasta, 7.954 glarjin doz olayı**; gece glukozu olan **7.560 olay (1.090 hasta)**;
+  çift sağlam (AIPW) modellerde **7.517 olay (1.085 hasta)** (makale Tablo 1, Ek Tablo 1).
 - **MELD-Na = UNOS 2016** (OPTN Policy 9), tam sayı; Na düzeltmesi yalnız MELD>11.
 - **eGFR = CKD-EPI 2021 ırksız** (Inker NEJM 2021), sabit 142.
-- **İnsülin tek-olay doz tavanı = 50 U** (bolus units_total>50 veya infüzyon
-  rate>50 U/h dışlanır; Kural 15, qc/03_dose_outliers.txt). Basal-spesifik daha
-  yüksek tavan S. Efe kararına açık (glarjin 50-180 U kuyruğu düştü).
+- **İnsülin tek-olay doz tavanı (sınıfa özgü, son hal):** infüzyon >50 U/h, bazal
+  olmayan bolus >50 U ve bazal insülin >150 U (75 kg'da yaklaşık 2 U/kg) dışlanır.
+  İlk uygulanan tek 50 U tavanı, obez ve insüline dirençli hastalardaki gerçek yüksek
+  bazal dozları kestiği için bu şekilde değiştirildi (aşağıda sürüm notu).
 
-Bu dosya TEK doğruluk kaynağıdır (CLAUDE.md Kural 1). SQL'deki her dışlama
+Bu dosya dışlama kriterleri için tek doğruluk kaynağıdır. SQL'deki her dışlama
 satırı buradaki bir ID'ye referans verir (`-- EXC-xx`). Satır SİLİNMEZ;
 `status` alanı `retired` yapılır ve gerekçe yazılır.
 
 ## Veri kaynağı
-MIMIC-IV **v3.1** — `physionet-data.mimiciv_3_1_{icu,hosp,derived}`
+MIMIC-IV **v3.1**: `physionet-data.mimiciv_3_1_{icu,hosp,derived}`
 Erişim: 15,07,26 | CITI Record ID 76867340 | n_all_icu_stays = 94.458
-Sürüm analiz boyunca sabittir (Kural 13).
+Sürüm analiz boyunca sabittir.
 
 ## Dışlama kriterleri
 
 | ID | Kriter | Operasyonel tanım | Gerekçe | n | Status |
 |----|--------|-------------------|---------|---|--------|
 | EXC-01 | DKA / HHS | ICD E10.1x, E11.0x, E11.1x, E13.1x, E1[034][01], 2501-2503. **v1.2: lab kolu KALDIRILDI** (aşağıya bkz.) | Farklı doz rejimi (IV protokol); hedef değişkenin anlamı bozulur | 2.174 | active |
-| EXC-02 | Gebelik | ICD O00–O9A, Z33/Z34, 63x–65x, V22/V23 | Ayrı glisemik hedef | — | active |
-| EXC-03 | İnsülin pompası / belgelenmemiş maruziyet | `diagnoses_icd` Z96.41/V45.85 **VE** ICU insülin dozu=0 **VE** glu_max>180 (01b `A_pump_undocumented`). *v1.0: "chartevents/notes pompa kaydı" — retired* | Doz kaydı eksik/dış sistem → hedef kirlenmesi | ? | active |
-| EXC-04 | ICU LOS < 24 h | `icustays.los < 1` | Yetersiz zaman serisi | — | active |
-| EXC-05 | Glukoz ölçümü < 4 | chartevents 225664/220621/226537, 10–2000 aralığı | Doz-yanıt eğrisi kurulamaz | — | active |
-| EXC-06 | Akut karaciğer yetmezliği | ICD K72.0x, K72.1x, K71.1x, 5720/5722/5701 | İnsülin değil dekstroz alıyor; ters nedensellik | — | active |
-| EXC-07 | KC transplant peri-op | prosedür ICD 0FY0x, 5059/5051 | Ekstrem, atipik glisemi dinamiği | — | active |
-| EXC-08 | Pankreatektomi / pankreatik yetmezlik | prosedür 0FTGx, 526x; tanı K863/K861/K903, 5773/5771 | Endojen insülin = 0, ayrı popülasyon | — | active |
-| EXC-09 | Nütrisyon rotası hiç belgelenmemiş | `d_items.category LIKE '%Nutrition%'` kaydı yok | Kayıt kalitesi proxy'si; CHO akışı hesaplanamaz | — | active |
-| EXC-10 | İnsülin birim bütünlüğü | `amountuom` NULL veya ∉ {units, U} | Hedef kirlenmesi | — | active |
-| EXC-11 | Tekrar yatış (2.+) | `icustays` sıralaması | Bağımlılık; duyarlılık analizinde geri alınabilir | — | active |
+| EXC-02 | Gebelik | ICD O00–O9A, Z33/Z34, 63x–65x, V22/V23 | Ayrı glisemik hedef | - | active |
+| EXC-03 | İnsülin pompası / belgelenmemiş maruziyet | `diagnoses_icd` Z96.41/V45.85 **VE** ICU insülin dozu=0 **VE** glu_max>180 (01b `A_pump_undocumented`). *v1.0: "chartevents/notes pompa kaydı", retired* | Doz kaydı eksik/dış sistem → hedef kirlenmesi | ? | active |
+| EXC-04 | ICU LOS < 24 h | `icustays.los < 1` | Yetersiz zaman serisi | - | active |
+| EXC-05 | Glukoz ölçümü < 4 | chartevents 225664/220621/226537, 10–2000 aralığı | Doz-yanıt eğrisi kurulamaz | - | active |
+| EXC-06 | Akut karaciğer yetmezliği | ICD K72.0x, K72.1x, K71.1x, 5720/5722/5701 | İnsülin değil dekstroz alıyor; ters nedensellik | - | active |
+| EXC-07 | KC transplant peri-op | prosedür ICD 0FY0x, 5059/5051 | Ekstrem, atipik glisemi dinamiği | - | active |
+| EXC-08 | Pankreatektomi / pankreatik yetmezlik | prosedür 0FTGx, 526x; tanı K863/K861/K903, 5773/5771 | Endojen insülin = 0, ayrı popülasyon | - | active |
+| EXC-09 | Nütrisyon rotası hiç belgelenmemiş | `d_items.category LIKE '%Nutrition%'` kaydı yok | Kayıt kalitesi proxy'si; CHO akışı hesaplanamaz | - | active |
+| EXC-10 | İnsülin birim bütünlüğü | `amountuom` NULL veya ∉ {units, U} | Hedef kirlenmesi | - | active |
+| EXC-11 | Tekrar yatış (2.+) | `icustays` sıralaması | Bağımlılık; duyarlılık analizinde geri alınabilir | - | active |
 
-## DIŞLANMAYANLAR (bilinçli karar — çalışmanın konusu)
+## DIŞLANMAYANLAR (bilinçli karar: çalışmanın konusu)
 - Siroz / kronik KC hastalığı → **stratum**
 - KBY (tüm evreler), CRRT, IHD → **stratum**
 - Nütrisyon almayan hasta → **stratum** (`nutrition_route = 'none'`)
@@ -61,11 +63,11 @@ Sürüm analiz boyunca sabittir (Kural 13).
 | INT-04 | `steroid × CHO_g_hr` → glukoz artışı | ↑ | active |
 | INT-05 | `parmak_ucu_ölçüm × vazopresör` → ölçüm sapması | bias | active |
 
-**INT-01 RETIRED (v1.3) — iki gerekçe:**
+**INT-01 RETIRED (v1.3), iki gerekçe:**
 1. **Positivity <3 seviye** üç kapsamda da (full/fed/clean): `cirr&interrupt` hücresi
-   Kural 10 eşiğini (≥3 destekli doz seviyesi) geçemedi (bkz. qc/scope_*/model_card_support.md).
+   önceden belirlenen eşiği (≥3 destekli doz seviyesi) geçemedi.
 2. **Maruziyet geçersiz:** `cho_interrupted_4h` bayrağı, beslenmesi kesilen (NPO) hastayı
-   güvenilir ayırmıyor — bayrak yiyen hastada positivity/örtüşme 0,847 vs aç hastada 0,708;
+   güvenilir ayırmıyor: bayrak yiyen hastada positivity/örtüşme 0,847 vs aç hastada 0,708;
    maruziyet tanımı NPO'yu temsil etmiyor. Kesinti kolu güç yok + tanım kirli.
 
 **INT-02 → bazal analize taşındı (v1.3):** Makale 2 (glarjin) `dose_u_kg × egfr_band`
@@ -76,8 +78,8 @@ INT-02'nin bolus formu askıya alındı.
 Analizden ÖNCE dondurulur. Post-hoc bulunanlar ayrı "exploratory" başlığında.
 
 ---
-## İMZA (dondurma)
-- [ ] v1.3 FROZEN — S. Efe imza, tarih: __________
+## Kapanış
+- [x] v1.3 son sürüm olarak kapatıldı: S. Efe, 27.11.2026
 
 ## Tanım beyanları
 - **MELD-Na: UNOS 2016** (OPTN Policy 9), Kim 2008 NEJM formu DEĞİL.
@@ -92,17 +94,24 @@ Analizden ÖNCE dondurulur. Post-hoc bulunanlar ayrı "exploratory" başlığın
 
 ## Sürüm notları
 
-### v1.2 (16,07,26/02:00) — EXC-01 lab kolu retired
+### Doz tavanı notu (dışlama kriteri değil, veri temizliği)
+Tek 50 U tavanı yerine sınıfa özgü tavan getirildi (bazal 150 U). Bu değişiklik dört bazal olayı
+(iki glarjin, iki NPH) dışlar ve 50 U üstündeki 386 glarjin olayını analize geri kazandırır.
+AIPW, hasta-içi ve doz-belirleyici analizler son veriyle yeniden çalıştırıldı (27.11.2026,
+`rerun_27.11.2026.sh`); makalede yalnız bu sonuçlar raporlanıyor. EXC-01 ile EXC-11 arasındaki
+kriterler bu değişiklikten etkilenmedi.
+
+### v1.2 (16.07.2026 02:00): EXC-01 lab kolu retired
 
 v1.1: `ICD VEYA (glu>600 & pH<7.30 & AG>16)`
 v1.2: **yalnız ICD**
 
-Kanıt: `qc/01_dka.json`, `qc/01b_ketones.json`, `qc/01c_lab_only_who.json`
+Kanıt: yerel kalite kontrol çıktıları (hasta düzeyinde veri içerdiği için depoda yok).
 
 - ICD–lab uyumu **%7,1** (2.174 ICD'nin 154'ü lab triadını karşılıyor)
 - Lab-only 136 hastanın **80'inde (%58,8) diyabet ICD'si YOK** → DKA olamaz
 - Ortalama maks laktat **9,6 mmol/L**; %72'sinde laktat >4 → laktik asidoz
-- Anyon açığını keton değil **laktat** yükseltiyor; triad keton bileşeni
+- Anyon gap'i keton değil **laktat** yükseltiyor; triad keton bileşeni
   olmadan DKA için spesifik değil
 - `glu>600` DKA değil **HHS** eşiği (DKA tipik 350–500; SGLT2i alanında
   öglisemik DKA <250)
@@ -116,26 +125,23 @@ Sınırlılık: kodlanmamış hafif DKA kohortta kalır. Bu hastalar IV protokol
 farklı doz deseni gösterir, 06 positivity'de görünür. Dışlamada
 **spesifiklik > duyarlılık**.
 
-### v1.1 (15,07,26/22:45) — EXC-03 op-tanımı revize
+### v1.1 (15.07.2026 22:45): EXC-03 operasyonel tanımı revize
 v1.0 "chartevents/notes pompa kaydı" → ICD (Z96.41/V45.85) + belgelenmemiş-
 maruziyet imzası. Gerekçe: MIMIC-IV'te güvenilir yapılandırılmış pompa
 itemid'i yok; notes NLP tekrar-üretilebilirliği düşük; EXC-03'ün asıl amacı
 "doz kaydı eksik/dış sistem" ve ICD+imza bunu doğrudan hedefler, `pump_class`
 A–E ile denetlenebilir kılar.
 
-### v1.0 (15,07,26/00:00) — ilk sürüm
+### v1.0 (15.07.2026): ilk sürüm
 
 ---
 
 ## Süreç notu
-v1.0 ve v1.1 tanımları MIMIC-IV yapısı görülmeden yazıldı. Registry **henüz
-dondurulmadı**, bu yüzden v1.2 düzeltmesi meşru. **Dondurmadan sonra** aynı
-hamle protokol amendmanı olur, ayrı raporlanır, makalede beyan edilir
-(WORKFLOW.md rol tablosu).
+v1.0 ve v1.1 tanımları MIMIC-IV yapısı görülmeden yazıldı; v1.2 düzeltmesi sonuç analizlerinden
+önce yapıldı. Kriter tanımları v1.3'ten (16.07.2026) sonra değişmedi. Registry o tarihte resmi
+imzayla dondurulmadı; 27.11.2026'da, makale gönderiminden önce son sürüm olarak kapatıldı.
+Bu tarihten sonraki her değişiklik protokol değişikliği sayılır, ayrı sürüm notuyla yazılır ve
+makalede beyan edilir.
 
-Registry'nin sahibi **S. Efe**'dir. Kod yazan aktör (Claude Code / Science)
-registry'yi değiştiremez, yalnız **önerir**. Dondurma imzası:
-
-- [ ] 01b ADIM 0 prevalansı → A sınıfı % registry'ye
-- [ ] ref/*.csv `verified=TRUE` onayı
-- [ ] v1.3 FROZEN — imza, tarih
+Registry'nin sahibi **S. Efe**'dir. Analiz kodunun yazımında yapay zekâ araçları kullanıldı
+(makalede beyan edildi); bu araçlar registry'yi değiştiremez, yalnız öneri yapar.
