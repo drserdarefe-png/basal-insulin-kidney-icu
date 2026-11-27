@@ -1,0 +1,17 @@
+itemid,fluid_name,dextrose_pct,cho_g_per_l,special_handling,note,verified
+220949,Dextrose 5%,5.0,50,rate_or_bolus,00.3: 1234818 olay. rate NOT NULL=idame (medyan 14.3 mL/h); rate NULL=BOLUS (453573 antibiyotik sulandiricisi 49463 hasta),TRUE
+225823,D5 1/2NS,5.0,50,rate_or_bolus,idame,TRUE
+225825,D5NS,5.0,50,rate_or_bolus,idame,TRUE
+225827,D5LR,5.0,50,rate_or_bolus,idame,TRUE
+225941,D5 1/4NS,5.0,50,rate_or_bolus,idame,TRUE
+220950,Dextrose 10%,10.0,100,rate_or_bolus,konsantre idame,TRUE
+228140,Dextrose 20%,20.0,200,rate_or_bolus,santral,TRUE
+228141,Dextrose 30%,30.0,300,rate_or_bolus,santral n=4 hasta,TRUE
+228142,Dextrose 40%,40.0,400,rate_or_bolus,santral n=10 hasta,TRUE
+220952,Dextrose 50%,50.0,500,d50_rescue,KURAL 7: cho_g_hr toplamina GIRMEZ. 16333 bolus/7273 hasta,TRUE
+227529,ACD-A Citrate (1000ml),2.45,24.5,rate_or_bolus,CRRT GIZLI KALORI. 1908 hasta. 150 mL/h ~ 3.7 g/h,TRUE
+227528,ACD-A Citrate (500ml),2.45,24.5,rate_or_bolus,ayni solusyon farkli torba. 38 hasta,TRUE
+225947,Dextrose PN,,,pn_grams,BULGU-C: amount=GRAM. 787 hasta. Medyan 208 g / 22.8 h = 9.1 g/h,TRUE
+225916,TPN w/ Lipids,,,tpn_unknown,1288 hasta. Torba dekstrozu YOK -> flag,TRUE
+225917,TPN without Lipids,,,tpn_unknown,1378 hasta,TRUE
+225920,Peripheral Parenteral Nutrition,,,tpn_unknown,175 hasta,TRUE

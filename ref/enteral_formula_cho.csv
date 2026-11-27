@@ -1,0 +1,78 @@
+itemid,label_mimic,product_base,strength_frac,cho_g_per_l_full,cho_g_per_l_eff,n_events,verified
+228351,Nepro (Full),Nepro Carb Steady,1.00,161,161.0,23090,TRUE
+225936,Replete with Fiber (Full),Replete w/Fiber,1.00,113,113.0,20635,TRUE
+229296,Vital High Protein (Full),Vital HP,1.00,111,111.0,20019,TRUE
+229009,Promote (Full),Promote,1.00,130,130.0,17351,TRUE
+229297,Osmolite 1.5 (Full),Osmolite 1.5,1.00,204,204.0,15811,TRUE
+229011,Jevity 1.5 (Full),Jevity 1.5,1.00,216,216.0,14831,TRUE
+229014,Promote with Fiber (Full),Promote w/Fiber,1.00,138,138.0,13976,TRUE
+229013,Glucerna 1.2 (Full),Glucerna 1.2,1.00,114,114.0,13963,TRUE
+229295,Glucerna 1.5 (Full),Glucerna 1.5,1.00,133,133.0,13875,TRUE
+229010,Jevity 1.2 (Full),Jevity 1.2,1.00,169,169.0,13219,TRUE
+227695,Fibersource HN (Full),Fibersource HN,1.00,160,160.0,6138,TRUE
+228135,Isosource 1.5 (Full),Isosource 1.5,1.00,170,170.0,6088,TRUE
+226880,Nutren Pulmonary (Full),Nutren Pulmonary,1.00,100,100.0,6004,TRUE
+228367,Two Cal HN (Full),TwoCal HN,1.00,219,219.0,5445,TRUE
+229012,Vital 1.5 (Full),Vital 1.5,1.00,135,135.0,4801,TRUE
+227975,NovaSource Renal (Full),NovaSource Renal,1.00,185,185.0,4417,TRUE
+225931,Nutren 2.0 (Full),Nutren 2.0,1.00,196,196.0,3976,TRUE
+225935,Replete (Full),Replete,1.00,113,113.0,3157,TRUE
+227979,Boost Glucose Control (Full),Boost Glucose Control,1.00,66,66.0,3125,TRUE
+228383,Peptamen Bariatric (Full),Peptamen Bariatric,1.00,93,93.0,2787,TRUE
+228363,Pulmocare (Full),Pulmocare,1.00,106,106.0,2483,TRUE
+225934,Vivonex (Full),Vivonex RTF,1.00,175,175.0,2332,TRUE
+225930,Peptamen 1.5 (Full),Peptamen 1.5,1.00,188,188.0,2300,TRUE
+221036,Nutren Renal (Full),Nutren Renal,1.00,170,170.0,1850,TRUE
+228359,Glucerna (Full),Glucerna 1.0,1.00,96,96.0,1510,TRUE
+225937,Ensure (Full),Ensure Original,1.00,139,139.0,883,TRUE
+225928,Impact with Fiber (Full),Impact w/Fiber,1.00,140,140.0,592,TRUE
+225929,ProBalance (Full),ProBalance,1.00,156,156.0,385,TRUE
+226877,Ensure Plus (Full),Ensure Plus,1.00,215,215.0,212,TRUE
+221207,Impact (Full),Impact,1.00,130,130.0,175,TRUE
+228355,Enlive (Full),Ensure Enlive,1.00,186,186.0,148,TRUE
+226051,Replete with Fiber (1/2),Replete w/Fiber,0.50,113,56.5,205,TRUE
+226050,Replete with Fiber (3/4),Replete w/Fiber,0.75,113,84.8,172,TRUE
+226046,Replete (3/4),Replete,0.75,113,84.8,150,TRUE
+226047,Replete (1/2),Replete,0.50,113,56.5,130,TRUE
+227973,NovaSource Renal (1/2),NovaSource Renal,0.50,185,92.5,130,TRUE
+226031,Nutren Renal (1/2),Nutren Renal,0.50,170,85.0,121,TRUE
+227518,Nutren 2.0 (3/4),Nutren 2.0,0.75,196,147.0,83,TRUE
+226030,Nutren Renal (3/4),Nutren Renal,0.75,170,127.5,64,TRUE
+228131,Isosource 1.5 (1/2),Isosource 1.5,0.50,170,85.0,64,TRUE
+226038,Peptamen 1.5 (3/4),Peptamen 1.5,0.75,188,141.0,62,TRUE
+227974,NovaSource Renal (3/4),NovaSource Renal,0.75,185,138.8,59,TRUE
+226048,Replete with Fiber (1/4),Replete w/Fiber,0.25,113,28.3,59,TRUE
+227696,Fibersource HN (3/4),Fibersource HN,0.75,160,120.0,50,TRUE
+226019,Nutren 2.0 (1/2),Nutren 2.0,0.50,196,98.0,45,TRUE
+226022,Impact (3/4),Impact,0.75,130,97.5,44,TRUE
+226882,Nutren Pulmonary (1/2),Nutren Pulmonary,0.50,100,50.0,43,TRUE
+227698,Fibersource HN (1/2),Fibersource HN,0.50,160,80.0,42,TRUE
+226045,Replete (2/3),Replete,0.667,113,75.4,38,TRUE
+226039,Peptamen 1.5 (1/2),Peptamen 1.5,0.50,188,94.0,36,TRUE
+226023,Impact (1/2),Impact,0.50,130,65.0,31,TRUE
+226016,Nutren 2.0 (1/4),Nutren 2.0,0.25,196,49.0,29,TRUE
+226026,Impact with Fiber (3/4),Impact w/Fiber,0.75,140,105.0,29,TRUE
+226049,Replete with Fiber (2/3),Replete w/Fiber,0.667,113,75.4,26,TRUE
+226059,Vivonex (1/2),Vivonex RTF,0.50,175,87.5,26,TRUE
+227699,Fibersource HN (1/4),Fibersource HN,0.25,160,40.0,26,TRUE
+228134,Isosource 1.5 (3/4),Isosource 1.5,0.75,170,127.5,20,TRUE
+228356,Glucerna (1/2),Glucerna 1.0,0.50,96,48.0,18,TRUE
+226017,Nutren 2.0 (2/3),Nutren 2.0,0.667,196,130.7,17,TRUE
+227977,Boost Glucose Control (1/2),Boost Glucose Control,0.50,66,33.0,17,TRUE
+226036,Peptamen 1.5 (1/4),Peptamen 1.5,0.25,188,47.0,17,TRUE
+228364,Two Cal HN (1/2),TwoCal HN,0.50,219,109.5,14,TRUE
+226044,Replete (1/4),Replete,0.25,113,28.3,14,TRUE
+226881,Nutren Pulmonary (3/4),Nutren Pulmonary,0.75,100,75.0,13,TRUE
+228348,Nepro (1/2),Nepro Carb Steady,0.50,161,80.5,12,TRUE
+227978,Boost Glucose Control (3/4),Boost Glucose Control,0.75,66,49.5,11,TRUE
+226020,Impact (1/4),Impact,0.25,130,32.5,10,TRUE
+226027,Impact with Fiber (1/2),Impact w/Fiber,0.50,140,70.0,8,TRUE
+226058,Vivonex (3/4),Vivonex RTF,0.75,175,131.3,8,TRUE
+228132,Isosource 1.5 (1/4),Isosource 1.5,0.25,170,42.5,8,TRUE
+226024,Impact with Fiber (1/4),Impact w/Fiber,0.25,140,35.0,3,TRUE
+226028,Nutren Renal (1/4),Nutren Renal,0.25,170,42.5,3,TRUE
+228360,Pulmocare (1/2),Pulmocare,0.50,106,53.0,2,TRUE
+228133,Isosource 1.5 (2/3),Isosource 1.5,0.667,170,113.4,2,TRUE
+226875,Ensure (3/4),Ensure Original,0.75,139,104.3,1,TRUE
+228361,Pulmocare (1/4),Pulmocare,0.25,106,26.5,1,TRUE
+227976,Boost Glucose Control (1/4),Boost Glucose Control,0.25,66,16.5,1,TRUE

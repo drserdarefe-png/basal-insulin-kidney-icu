@@ -1,0 +1,9 @@
+itemid,label,mode,tau_min,is_basal,tau_infusion_min,source,verified
+223258,Insulin - Regular,bolus_or_inf,150,FALSE,45,00.1 dogrulandi n=337446/26814; %47 infuzyon (rate NOT NULL). SC regular etki 4-6h tau~150; IV infuzyon etki kompartmani tau~45 (BULGU-06),TRUE
+223262,Insulin - Humalog,bolus,100,FALSE,,00.1 dogrulandi n=97298/16250. lispro hizli etkili 3-4h. DIKKAT: v1.0 CSV bunu Novolog sanmisti,TRUE
+229299,Insulin - Novolog,bolus,100,FALSE,,00.1 dogrulandi n=1241/249. aspart hizli etkili 3-4h. v1.0 CSV'de HIC YOKTU,TRUE
+223260,Insulin - Glargine,bolus,720,TRUE,,00.1 dogrulandi n=37251/13620. ~24h DUZ profil; ustel model fizyolojik DEGIL; IOB bolus havuzuna KATILMAZ. v1.0 CSV bunu Humalog 75/25 sanip tau=180 basal=FALSE atamisti - ANA MARUZIYET DEGISKENI BOZULACAKTI,TRUE
+223259,Insulin - NPH,bolus,420,TRUE,,00.1 dogrulandi n=10718/1722. etki 12-18h PIKLI profil; ustel yaklasim ZAYIF; bazal havuz. v1.0 CSV bunu Glargine sanmisti,TRUE
+223261,Insulin - Humalog 75/25,bolus,300,TRUE,,00.1 dogrulandi n=364/137. %75 lispro protamin (orta etkili) + %25 lispro; sure ~14-24h -> bazal havuz. v1.0 CSV bunu NPH sanmisti,TRUE
+223257,Insulin - 70/30,bolus,300,TRUE,,00.1 dogrulandi n=864/289. karisim; sure ~14-24h,TRUE
+229619,Insulin - U500,bolus,360,TRUE,,00.1 dogrulandi n=25/6. 5x konsantre regular; farmakokinetigi orta etkiliye kayar. n=6 hasta - istatistiksel etkisi YOK ama ref'te tutulur ki 00.6 ayrisma denetimi temiz donsun ve 01b bu hastalari EXC-03 sanmasin,TRUE

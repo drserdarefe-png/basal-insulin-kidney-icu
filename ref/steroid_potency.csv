@@ -1,0 +1,8 @@
+drug_regex,generic,potency_pred_eq,source,verified
+^methylprednisolone|^methylpredniso|solu-?medrol|^medrol,methylprednisolone,1.25,4 mg = 5 mg prednizon. 00.5b IV n_hadm=12940 PO n_hadm=1159,TRUE
+^dexamethasone|^dexametha|^dexameth|^dexamethason|decadron,dexamethasone,6.67,0.75 mg = 5 mg prednizon. 00.5b IV n_hadm=12219 PO n_hadm=4821,TRUE
+^prednisone|^predniso$|^predniso |^prednis$,prednisone,1.00,referans molekul. 00.5b PO n_hadm=10823,TRUE
+^prednisolone|^prednisolone oral,prednisolone,1.00,prednizon esdegeri. 00.5b PO n_hadm=80,TRUE
+^hydrocortisone|^hydrocortison |^cortef|^hydrocorTISone,hydrocortisone,0.25,20 mg = 5 mg prednizon. BULGU-02: v1.0 4.0 idi 16x abartiyordu. 00.5b IV n_hadm=7894,TRUE
+^cortisone,cortisone,0.20,25 mg = 5 mg prednizon. n_hadm<10,TRUE
+^fludrocortisone,fludrocortisone,2.50,glukokortikoid potens 10x HC. 00.5b n_hadm=142. Dozlar 0.05-0.2 mg -> katki ihmal edilebilir,TRUE

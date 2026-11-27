@@ -1,0 +1,31 @@
+route,systemic,rationale
+IV,TRUE,intravenoz tam sistemik
+IV DRIP,TRUE,surekli infuzyon
+IV BOLUS,TRUE,bolus
+PB,TRUE,piggyback IV yan hat
+PO,TRUE,oral yuksek biyoyararlanim
+ORAL,TRUE,PO ile ayni farkli yazim
+PO/NG,TRUE,oral veya nazogastrik
+NG,TRUE,nazogastrik tup
+G TUBE,TRUE,gastrostomi
+PO OR ENTERAL TUBE,TRUE,oral/enteral
+IM,TRUE,intramuskuler sistemik. DEPO formlari acetate regex ile zaten elenir
+TP,FALSE,topikal cilt. 00.5b Hydrocortisone Cream n_hadm=1012
+PR,FALSE,rektal. 00.5b Rectal Cream n_hadm=2335 Supp n_hadm=587. Sistemik emilim var ama dusuk -> DUYARLILIK ANALIZI
+VG,FALSE,vajinal
+LEFT EYE,FALSE,oftalmik
+RIGHT EYE,FALSE,oftalmik
+BOTH EYES,FALSE,oftalmik. 00.5b PrednisoLONE Acetate Ophth n_hadm=1989 EN BUYUK YANLIS POZITIF
+OU,FALSE,her iki goz
+OS,FALSE,sol goz
+OD,FALSE,sag goz
+AS,FALSE,sol kulak
+AD,FALSE,sag kulak
+AU,FALSE,her iki kulak
+LEFT EAR,FALSE,otik
+RIGHT EAR,FALSE,otik
+BOTH EARS,FALSE,otik
+ET,FALSE,endotrakeal - veri hatasi n=1
+IT,FALSE,intratekal. 00.5b n_hadm=306+294. Sistemik degil
+INTERSPACE,FALSE,epidural/faset - lokal
+IA,FALSE,intraartikuler - lokal
